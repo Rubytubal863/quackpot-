@@ -10,24 +10,6 @@ your files, your settings, or anything security-related.
 built for the 2022 usb rubber ducky / duckyscript 3.0, compiles in payload studio
 (payloadstudio.hak5.org). most degrade fine on the classic ducky too.
 
-## rules
-
-run these on your own machine, or on someone who's said "yeah, prank me." that's the
-whole deal. a rubber ducky is a keyboard that types on its own; running one on a
-computer without the owner's ok isn't a prank, it's keystroke injection, and plenty of
-places treat that as a crime. keep it consensual, revert it, move on.
-
-## what's not in here
-
-no exfil, no keylogging, no keystroke reflection, no loot.bin. no download-and-run, no
-droppers. no persistence: nothing in startup, services, scheduled tasks, or the
-registry. nothing touching defender, the firewall, uac, or any security setting.
-nothing destructive: no mass delete, no rm -rf, no format, no shutdown or bsod spam, no
-fork bombs, no ransomware bits. if it can't be undone in five seconds it doesn't belong
-here.
-
-## arming one
-
 1. open payload studio (payloadstudio.hak5.org).
 2. pick a payload below, open its `payloads/NN-slug/payload.txt`.
 3. paste it into a new payload.
