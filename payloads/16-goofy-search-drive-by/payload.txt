@@ -1,0 +1,16 @@
+REM Title: Goofy Search Drive-By
+REM Description: opens the browser straight to an absurd search.
+REM Target OS: Windows
+REM Novelty: a pre-baked dumb query, not a rickroll or search-history prank.
+REM Revert: close the tab.
+REM Author: azzie
+
+ATTACKMODE HID
+REM let the HID keyboard enumerate before we type anything
+DELAY 1000
+REM open the Run dialog
+GUI r
+REM give Run a moment to appear
+DELAY 500
+REM Run hands this URL to the default browser. Edit the q= value to change the question.
+STRINGLN https://duckduckgo.com/?q=are+ducks+just+ocean+chickens

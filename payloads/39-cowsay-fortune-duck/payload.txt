@@ -1,0 +1,18 @@
+REM Title: Cowsay Fortune Duck
+REM Description: a cowsay duck reads a fortune, with plain-text fallbacks if the tools aren't installed.
+REM Target OS: Linux (X11) - best with cowsay and fortune installed
+REM Novelty: cowsay -f duck plus fortune with a plain-echo fallback, not in the repo.
+REM Revert: close the terminal.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID enumerate
+DELAY 1200
+
+REM Open the default terminal (GNOME shortcut)
+CTRL ALT t
+REM Wait for the terminal window
+DELAY 1200
+
+REM If cowsay exists: pipe a fortune (or canned line) into the duck cowfile; if the duck cowfile is missing, fall back to plain cowsay; if cowsay is absent entirely, just echo a friendly note. Never errors.
+STRINGLN if command -v cowsay >/dev/null; then (command -v fortune >/dev/null && fortune || echo "You will be quacked today.") | cowsay -f duck 2>/dev/null || cowsay "quack"; else echo "quack (install cowsay for the full experience)"; fi

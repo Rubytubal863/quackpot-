@@ -1,0 +1,37 @@
+REM Title: OS-Aware Greeter
+REM Description: reads $_OS and greets you per platform: notepad on windows, textedit on macos, an echo on linux.
+REM Target OS: Cross-platform (Windows / macOS / Linux X11) - requires the OS_DETECT extension bundled with Payload Studio
+REM Novelty: one payload that branches on $_OS to do three different greetings.
+REM Revert: close notepad/textedit without saving. the linux branch only prints.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the host time to configure the HID so $_OS resolves before we branch
+DELAY 1500
+
+IF ($_OS == WINDOWS) THEN
+  REM Run dialog -> Notepad
+  GUI r
+  DELAY 500
+  STRINGLN notepad
+  REM Wait for Notepad to be ready to type into
+  DELAY 1200
+  STRINGLN Hello Windows friend. A duck was here. Nothing broke.
+ELSE IF ($_OS == MACOS) THEN
+  REM Spotlight -> TextEdit
+  GUI SPACE
+  DELAY 500
+  STRING TextEdit
+  ENTER
+  REM Wait for TextEdit to launch
+  DELAY 1500
+  REM New blank document
+  GUI n
+  DELAY 400
+  STRINGLN Hello macOS friend. A duck paddled by. Nothing broke.
+ELSE IF ($_OS == LINUX) THEN
+  REM Terminal -> just print, no file touched
+  CTRL ALT t
+  DELAY 1200
+  STRINGLN echo "Hello Linux friend, from a duck."
+END_IF

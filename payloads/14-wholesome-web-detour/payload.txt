@@ -1,0 +1,18 @@
+REM Title: Wholesome Web Detour
+REM Description: opens the browser to pointerpointer, a pointless-but-harmless site.
+REM Target OS: Windows
+REM Novelty: a harmless detour instead of a rickroll.
+REM Revert: close the tab.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the host enumerate the HID keyboard before typing.
+DELAY 1200
+
+REM Open the Run dialog.
+GUI r
+REM Wait for the Run dialog to appear.
+DELAY 500
+REM Typing a full URL into Run opens it in the default browser.
+REM Swap this one line for any SFW site you like.
+STRINGLN https://pointerpointer.com

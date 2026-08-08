@@ -1,0 +1,40 @@
+REM Title: Button Encore
+REM Description: opens notepad and arms the ducky's button so each press types a random duck joke.
+REM Target OS: Cross-platform (opener uses Windows Run; jokes land in whatever text field is focused)
+REM Novelty: an on-demand joke machine from BUTTON_DEF plus rng.
+REM Revert: unplug the ducky. it stays armed between presses.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate.
+DELAY 1200
+
+REM Give the jokes somewhere to land.
+GUI r
+DELAY 500
+STRING notepad
+ENTER
+DELAY 1200
+STRINGLN Press the ducky button for a joke.
+
+REM Declare the roll variable once; the button handler reassigns it on every press.
+VAR $pick = 0
+
+REM BUTTON_DEF runs on every physical button press; a new roll each time.
+BUTTON_DEF
+    $_RANDOM_MIN = 1
+    $_RANDOM_MAX = 3
+    $pick = $_RANDOM_INT
+    IF ($pick == 1) THEN
+        STRINGLN Why did the duck cross the road? To prove he was no chicken.
+    ELSE IF ($pick == 2) THEN
+        STRINGLN What do you call a duck that gets straight As? A wise quacker.
+    ELSE
+        STRINGLN What time does a duck wake up? At the quack of dawn.
+    END_IF
+END_BUTTON
+
+REM Keep the payload alive so button presses keep firing.
+WHILE (TRUE)
+    DELAY 1000
+END_WHILE

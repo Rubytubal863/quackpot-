@@ -1,0 +1,38 @@
+REM Title: Ghost in the Machine
+REM Description: a ghost types an eerie note with glitchy static, then reveals it's just a duck.
+REM Target OS: Windows (the jitter + static technique is cross-platform; the opener is Windows Run)
+REM Novelty: jitter plus RANDOM_CHAR static for a haunted-typewriter effect.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate.
+DELAY 1200
+
+REM Open Notepad first so the slow, jittery typing does not affect the Run box.
+GUI r
+DELAY 500
+STRING notepad
+ENTER
+DELAY 1200
+
+REM Haunted typewriter feel: slow chars with organic timing jitter.
+DEFAULTCHARDELAY 70
+$_JITTER_ENABLED = TRUE
+$_JITTER_MAX = 120
+
+STRINGLN i can see you through the screen...
+REM A burst of static on its own line.
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+RANDOM_CHAR
+ENTER
+STRINGLN the walls are humming. your cursor blinks in morse code.
+STRINGLN something cold is paddling across your keyboard...
+ENTER
+STRINGLN boo. (it is a duck.)

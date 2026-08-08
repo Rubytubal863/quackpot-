@@ -1,0 +1,26 @@
+REM Title: ASCII Duck Pond
+REM Description: prints an ascii duck pond into the terminal.
+REM Target OS: Linux (X11) - needs a terminal that opens on CTRL ALT t (GNOME default)
+REM Novelty: a heredoc pond scene, not in the repo.
+REM Revert: close the terminal.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID enumerate before we send anything
+DELAY 1200
+
+REM Open the default terminal (GNOME shortcut)
+CTRL ALT t
+REM Wait for the terminal window to appear
+DELAY 1200
+
+REM Single-quoted heredoc tag ('POND') means the shell expands NOTHING inside - no globbing of ~, no (), <, backslashes stay literal
+STRINGLN cat <<'POND'
+STRINGLN    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+STRINGLN    ~    __(.)<  quack!     ~
+STRINGLN    ~    \___)              ~
+STRINGLN    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+STRINGLN   |//|   |//|      |\\|  |\\|
+STRINGLN        a serene little pond
+REM The terminator on its own line ends the heredoc and cat flushes the art
+STRINGLN POND

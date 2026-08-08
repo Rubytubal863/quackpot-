@@ -1,0 +1,15 @@
+REM Title: Beep Symphony
+REM Description: plays a six-note phrase on the system beep. no volume change, no files.
+REM Target OS: Windows
+REM Novelty: a composed [console]::beep tune, self-contained, doesn't touch audio settings like SoundChangeDuck.
+REM Revert: none, sound only.
+REM Author: azzie
+
+ATTACKMODE HID
+DELAY 1200
+
+REM Open Run and play a short phrase via [console]::beep(freq_hz, duration_ms).
+REM Console runs visibly (no stealth): it flashes open, beeps, exits. No settings are touched.
+GUI r
+DELAY 500
+STRINGLN powershell -c "[console]::beep(523,180);[console]::beep(587,180);[console]::beep(659,180);[console]::beep(523,180);[console]::beep(659,320);[console]::beep(784,400)"

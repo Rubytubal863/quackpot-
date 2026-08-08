@@ -1,0 +1,35 @@
+REM Title: Duck Fortune Cookie
+REM Description: rolls one of five duck fortunes into notepad, different each run.
+REM Target OS: Windows
+REM Novelty: a random fortune picker with $_RANDOM_INT and IF branching.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate.
+DELAY 1200
+
+REM Open Notepad as the fortune surface (never saved).
+GUI r
+DELAY 500
+STRING notepad
+ENTER
+DELAY 1200
+
+STRINGLN Your duck fortune:
+
+REM Roll a fortune in [1,5]; a value cannot be typed directly, so branch to print it.
+$_RANDOM_MIN = 1
+$_RANDOM_MAX = 5
+VAR $f = $_RANDOM_INT
+IF ($f == 1) THEN
+    STRINGLN A rubber duck listens best when your code is at its worst.
+ELSE IF ($f == 2) THEN
+    STRINGLN Great migrations begin with a single quack.
+ELSE IF ($f == 3) THEN
+    STRINGLN Still waters hide the busiest paddling.
+ELSE IF ($f == 4) THEN
+    STRINGLN Today you will fix a bug by explaining it out loud.
+ELSE
+    STRINGLN Do not count your ducklings before they hatch, but do name them.
+END_IF

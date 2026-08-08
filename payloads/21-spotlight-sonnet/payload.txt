@@ -1,0 +1,37 @@
+REM Title: Spotlight Sonnet
+REM Description: types a short duck poem into spotlight, then escapes out. nothing runs.
+REM Target OS: macOS
+REM Novelty: spotlight used as a scratch pad; it never hits enter.
+REM Revert: none, escape clears spotlight.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard enumerate before typing
+DELAY 1200
+
+REM Open Spotlight (Command+Space)
+GUI SPACE
+DELAY 500
+
+REM Typewriter feel for the poem
+DEFAULTCHARDELAY 70
+
+REM The whole poem lives in the single Spotlight text field.
+REM CRITICAL: never press ENTER anywhere below. ENTER would try to RUN
+REM whatever is in the bar. We only ever type, then ESCAPE to clear.
+STRING A little duck
+SPACE
+STRING sat on a log,
+SPACE
+STRING dreaming of ponds
+SPACE
+STRING deep in the fog.
+SPACE
+STRING Quack, says the duck,
+SPACE
+STRING and drifts away.
+
+REM pause, then clear it
+DELAY 900
+REM ESCAPE dismisses Spotlight without running anything
+ESCAPE

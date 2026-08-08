@@ -1,0 +1,52 @@
+REM Title: Emoji Picker Parade
+REM Description: opens notepad and walks a row of animal emoji in through the win+. picker.
+REM Target OS: Windows
+REM Novelty: uses the windows emoji panel (win+.) as the mechanism.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+DELAY 1200
+
+REM Open Run and launch Notepad
+GUI r
+DELAY 500
+STRINGLN notepad
+REM Wait for Notepad to be focused before typing
+DELAY 1200
+
+REM GUI . opens the Windows emoji panel (Win10+). Type a name to filter, ENTER inserts the top match.
+GUI .
+DELAY 300
+STRING duck
+DELAY 300
+ENTER
+DELAY 200
+
+GUI .
+DELAY 300
+STRING frog
+DELAY 300
+ENTER
+DELAY 200
+
+GUI .
+DELAY 300
+STRING penguin
+DELAY 300
+ENTER
+DELAY 200
+
+GUI .
+DELAY 300
+STRING cat
+DELAY 300
+ENTER
+DELAY 200
+
+GUI .
+DELAY 300
+STRING unicorn
+DELAY 300
+ENTER
+DELAY 200

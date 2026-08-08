@@ -1,0 +1,24 @@
+REM Title: Volume Serenade
+REM Description: ramps the volume up in steps with a ping at each, then restores the exact original level.
+REM Target OS: macOS
+REM Novelty: reads the current output volume and restores it exactly, no extra tools.
+REM Revert: auto, it restores the saved level at the end.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID keyboard time to enumerate
+DELAY 1200
+
+REM Open Spotlight and launch Terminal
+GUI SPACE
+DELAY 500
+STRINGLN terminal
+REM Wait for Terminal to come up
+DELAY 1500
+
+REM One line (bash): $OLD captures the current output volume via osascript, we ramp 20->80 playing Ping.aiff at each step, then restore $OLD exactly. The $ vars are shell variables, expanded on the host, not Ducky variables.
+STRINGLN OLD=$(osascript -e 'output volume of (get volume settings)'); for v in 20 40 60 80; do osascript -e "set volume output volume $v"; afplay /System/Library/Sounds/Ping.aiff; done; osascript -e "set volume output volume $OLD"
+
+REM Give the serenade time to play and restore before closing the shell
+DELAY 6000
+STRINGLN exit

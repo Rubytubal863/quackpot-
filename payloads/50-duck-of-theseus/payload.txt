@@ -1,0 +1,53 @@
+REM Title: The Duck of Theseus
+REM Description: opens a throwaway editor, muses about a duck whose quacks all get replaced, then says how to disarm it.
+REM Target OS: Cross-platform (Windows / macOS / Linux X11; needs the OS_DETECT extension bundled in Payload Studio)
+REM Novelty: a meta finale, philosophy plus credits plus disarm steps, branching on $_OS.
+REM Revert: close the editor without saving. the linux branch only prints.
+REM Author: azzie
+
+ATTACKMODE HID
+REM One delay covers HID enumeration AND gives OS_DETECT time to configure $_OS
+DELAY 1500
+
+REM The musing itself. Same lines in every branch, so it lives in a function.
+REM Blank lines use ENTER on their own.
+FUNCTION type_musing()
+  STRINGLN If you replace every quack of a duck, one at a time, is it the same duck?
+  ENTER
+  STRINGLN The planks are quacks. The ship is a pond. The philosophers are confused.
+  STRINGLN Meanwhile the duck just wants some bread.
+  ENTER
+  STRINGLN This was quackpot, a harmless prank. Nothing was saved or changed.
+  STRINGLN To disarm me: just close this window and unplug the little device
+  STRINGLN pretending to be a keyboard. Quack.
+END_FUNCTION
+
+IF ($_OS == WINDOWS) THEN
+  REM Notepad via the Run dialog
+  GUI r
+  DELAY 500
+  STRING notepad
+  ENTER
+  DELAY 1200
+  type_musing()
+ELSE IF ($_OS == MACOS) THEN
+  REM Spotlight, then TextEdit
+  GUI SPACE
+  DELAY 500
+  STRING TextEdit
+  ENTER
+  REM TextEdit needs time to launch
+  DELAY 1500
+  REM New blank document (Cmd+N on macOS, GUI == Command)
+  GUI n
+  DELAY 400
+  type_musing()
+ELSE IF ($_OS == LINUX) THEN
+  REM Terminal, then a quoted heredoc that just prints the text back (nothing saved)
+  CTRL ALT t
+  DELAY 1200
+  STRINGLN cat <<'THESEUS_EOF'
+  type_musing()
+  REM Close the heredoc so cat echoes the collected lines
+  STRINGLN THESEUS_EOF
+END_IF

@@ -1,0 +1,18 @@
+REM Title: Wallpaper of the Day (GNOME)
+REM Description: saves your gnome background, paints it solid hot-pink for six seconds, then restores it.
+REM Target OS: Linux (GNOME)
+REM Novelty: a solid-colour swap that saves and restores every background setting, not the KDE image swap.
+REM Revert: auto, it restores picture-uri, picture-options and primary-color.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard interface enumerate before typing
+DELAY 1200
+
+REM Open the default terminal (GNOME and most desktops: Ctrl+Alt+T)
+CTRL ALT t
+REM Give the terminal window time to spawn and take focus
+DELAY 1200
+
+REM Stash uri/options/color; drop image, force solid hot-pink 6s; then restore all three verbatim
+STRINGLN U=$(gsettings get org.gnome.desktop.background picture-uri); O=$(gsettings get org.gnome.desktop.background picture-options); C=$(gsettings get org.gnome.desktop.background primary-color); gsettings set org.gnome.desktop.background picture-options 'none'; gsettings set org.gnome.desktop.background primary-color '#ff69b4'; sleep 6; gsettings set org.gnome.desktop.background picture-uri "$U"; gsettings set org.gnome.desktop.background picture-options "$O"; gsettings set org.gnome.desktop.background primary-color "$C"

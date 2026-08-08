@@ -1,0 +1,20 @@
+REM Title: Konami Notepad
+REM Description: types the konami code into notepad and grants 30 lives.
+REM Target OS: Windows
+REM Novelty: a konami bit typed as text, nothing similar in the repo.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM let the HID keyboard enumerate before we type anything
+DELAY 1000
+REM open the Run dialog
+GUI r
+DELAY 500
+REM launch Notepad
+STRINGLN notepad
+REM wait for the Notepad window to be ready for input
+DELAY 1200
+REM type the code as LITERAL text; do NOT press the arrow keys or the cursor would just move
+STRINGLN UP UP DOWN DOWN LEFT RIGHT LEFT RIGHT B A
+STRINGLN + 30 extra lives granted. Cheat mode: DUCK.

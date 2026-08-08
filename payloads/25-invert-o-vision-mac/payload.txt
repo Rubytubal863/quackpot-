@@ -1,0 +1,20 @@
+REM Title: Invert-O-Vision (Mac)
+REM Description: inverts the whole display for a few seconds, then flips it back.
+REM Target OS: macOS
+REM Novelty: a timed macos invert toggle; no mac invert payload exists.
+REM Revert: auto, the same shortcut toggles it back.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard enumerate before the chord
+DELAY 1200
+
+REM Control+Option+Command+8 toggles Invert Colors (Accessibility shortcut).
+REM On the Ducky, ALT == Option and GUI == Command on macOS.
+CTRL ALT GUI 8
+
+REM hold the invert for a few seconds
+DELAY 4000
+
+REM Same chord again restores normal colors
+CTRL ALT GUI 8

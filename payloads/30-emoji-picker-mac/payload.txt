@@ -1,0 +1,55 @@
+REM Title: Mac Emoji Picker Parade
+REM Description: opens textedit and walks emoji in through the character viewer.
+REM Target OS: macOS
+REM Novelty: uses the macos emoji picker (ctrl+cmd+space).
+REM Revert: close textedit without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID keyboard time to enumerate
+DELAY 1200
+
+REM Open Spotlight and launch TextEdit
+GUI SPACE
+DELAY 500
+STRINGLN textedit
+REM Wait for TextEdit to come up
+DELAY 1500
+
+REM New blank document (Cmd+N)
+GUI n
+DELAY 500
+
+REM CTRL GUI SPACE opens the Character Viewer (emoji picker). Type the name to filter, ENTER inserts the top match.
+
+REM duck
+CTRL GUI SPACE
+DELAY 400
+STRING duck
+DELAY 400
+ENTER
+DELAY 200
+
+REM frog
+CTRL GUI SPACE
+DELAY 400
+STRING frog
+DELAY 400
+ENTER
+DELAY 200
+
+REM cat
+CTRL GUI SPACE
+DELAY 400
+STRING cat
+DELAY 400
+ENTER
+DELAY 200
+
+REM penguin
+CTRL GUI SPACE
+DELAY 400
+STRING penguin
+DELAY 400
+ENTER
+DELAY 200

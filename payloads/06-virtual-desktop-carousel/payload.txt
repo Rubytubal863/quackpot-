@@ -1,0 +1,45 @@
+REM Title: Virtual Desktop Carousel
+REM Description: makes three virtual desktops, surfs across them, then closes the ones it made.
+REM Target OS: Windows
+REM Novelty: a virtual-desktop surf-and-cleanup, not in the repo.
+REM Revert: auto. it closes the three desktops it created (win+ctrl+f4 x3) and lands on your original.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate before any keystrokes
+DELAY 1200
+
+REM --- Create three new virtual desktops; Win+Ctrl+D both CREATES and SWITCHES to each ---
+GUI CTRL d
+DELAY 500
+GUI CTRL d
+DELAY 500
+GUI CTRL d
+DELAY 500
+
+REM We now sit on the rightmost (3rd created) desktop.
+REM --- Tour left across the carousel all the way back to the original (Win+Ctrl+Left) ---
+GUI CTRL LEFT
+DELAY 400
+GUI CTRL LEFT
+DELAY 400
+GUI CTRL LEFT
+DELAY 400
+
+REM --- Surf right again back to the rightmost created desktop (Win+Ctrl+Right) ---
+REM Ending on the rightmost is what lets the cleanup below peel desktops off toward the original.
+GUI CTRL RIGHT
+DELAY 400
+GUI CTRL RIGHT
+DELAY 400
+GUI CTRL RIGHT
+DELAY 400
+
+REM --- Tidy up: Win+Ctrl+F4 closes the CURRENT desktop and shifts focus left ---
+REM Three closes remove exactly the three we created and leave us on the original.
+GUI CTRL F4
+DELAY 400
+GUI CTRL F4
+DELAY 400
+GUI CTRL F4
+DELAY 400

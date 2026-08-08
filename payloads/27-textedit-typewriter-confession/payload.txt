@@ -1,0 +1,31 @@
+REM Title: TextEdit Typewriter Confession
+REM Description: textedit slowly types a confession that turns out to be from the duck.
+REM Target OS: macOS
+REM Novelty: a macos typewriter confession with its own text, separate from the windows notepad gags.
+REM Revert: close textedit without saving (cmd+w, don't save).
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID keyboard time to enumerate
+DELAY 1200
+
+REM Open Spotlight and launch TextEdit
+GUI SPACE
+DELAY 500
+STRINGLN textedit
+REM Wait for TextEdit to come up
+DELAY 1500
+
+REM New blank document (Cmd+N)
+GUI n
+DELAY 500
+
+REM Typewriter feel: 85ms between characters (set AFTER Spotlight so the launch stayed fast)
+DEFAULTCHARDELAY 85
+
+STRINGLN I have to get something off my chest.
+ENTER
+STRINGLN You know the crumbs by the pond? The bread that went missing?
+STRINGLN That one sock. The rearranged fridge magnets.
+ENTER
+STRINGLN ...it was me. The duck. I regret nothing. Quack.

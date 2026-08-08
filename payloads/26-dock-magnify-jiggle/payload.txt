@@ -1,0 +1,24 @@
+REM Title: Dock Magnify Jiggle
+REM Description: cranks dock magnification huge for ~6s, then puts your settings back.
+REM Target OS: macOS
+REM Novelty: a dock-magnify gag that saves your prior magnification/largesize and writes them back.
+REM Revert: auto, it writes your saved values back (or removes the keys if they were unset) and relaunches the dock. manual undo in the readme.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID keyboard time to enumerate
+DELAY 1200
+
+REM Open Spotlight and launch Terminal
+GUI SPACE
+DELAY 500
+STRINGLN terminal
+REM Wait for Terminal to come up
+DELAY 1500
+
+REM One line: save the CURRENT magnification + largesize, crank to largesize 128, relaunch the Dock UI, wait 6s, then RESTORE the saved values (write them back if they existed, delete only if they were unset) and relaunch again. killall Dock just restarts the Dock process, nothing destructive. The $ vars are shell variables, expanded on the host, not Ducky variables.
+STRINGLN OLDMAG=$(defaults read com.apple.dock magnification 2>/dev/null); OLDSIZE=$(defaults read com.apple.dock largesize 2>/dev/null); defaults write com.apple.dock magnification -bool true; defaults write com.apple.dock largesize -int 128; killall Dock; sleep 6; if [ -n "$OLDMAG" ]; then defaults write com.apple.dock magnification -bool "$OLDMAG"; else defaults delete com.apple.dock magnification; fi; if [ -n "$OLDSIZE" ]; then defaults write com.apple.dock largesize -int "$OLDSIZE"; else defaults delete com.apple.dock largesize; fi; killall Dock
+
+REM Wait for the ramp + restore to finish before closing the shell
+DELAY 8000
+STRINGLN exit

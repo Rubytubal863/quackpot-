@@ -1,0 +1,20 @@
+REM Title: Screen Barrel Roll
+REM Description: flips the screen 180 for a few seconds, then rights it.
+REM Target OS: Windows (Intel iGPU rotation hotkeys only)
+REM Novelty: a timed 180 flip on intel gpu hotkeys with auto-revert, not the repo's Resolution_Prank.
+REM Revert: auto. ctrl+alt+up restores it after the delay. no-op on non-intel gpus.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate before any keystrokes
+DELAY 1200
+
+REM Intel Graphics rotation hotkey: rotate the display 180 degrees (upside-down).
+REM Does nothing on AMD/NVIDIA-only systems, or if driver hot keys are disabled.
+CTRL ALT DOWNARROW
+
+REM hold the flip for a few seconds
+DELAY 4000
+
+REM Intel Graphics rotation hotkey: rotate back to 0 degrees (normal).
+CTRL ALT UPARROW

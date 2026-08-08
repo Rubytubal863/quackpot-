@@ -1,0 +1,15 @@
+REM Title: Quack Certificate Popup
+REM Description: pops a friendly windows dialog awarding you a quack, dismissed with ok.
+REM Target OS: Windows
+REM Novelty: a themed one-button messagebox, not the scary WindowS_PoP_uP.
+REM Revert: click ok.
+REM Author: azzie
+
+ATTACKMODE HID
+REM let the HID keyboard enumerate before we type anything
+DELAY 1000
+REM open the Run dialog
+GUI r
+DELAY 500
+REM one-liner: load WPF, then show a friendly single-OK info box. Console runs visibly (no stealth).
+STRINGLN powershell -c "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('You have been officially QUACKED. No ducks (or files) were harmed. Click OK to waddle on.','Quackpot','OK','Information')"

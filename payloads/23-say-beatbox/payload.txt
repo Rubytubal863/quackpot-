@@ -1,0 +1,23 @@
+REM Title: Say Beatbox
+REM Description: makes the mac beatbox boots-and-cats through say.
+REM Target OS: macOS
+REM Novelty: tts beatbox, a different use of say.
+REM Revert: none, audio only.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard enumerate before typing
+DELAY 1200
+
+REM Open Terminal via Spotlight (Command+Space)
+GUI SPACE
+DELAY 500
+STRINGLN terminal
+REM Give Terminal a moment to launch and focus
+DELAY 1500
+
+REM -r 210 is a fast, beat-friendly words-per-minute rate
+STRINGLN say -r 210 "boots and cats and boots and cats and boots and cats and quack"
+
+REM Close the shell
+STRINGLN exit

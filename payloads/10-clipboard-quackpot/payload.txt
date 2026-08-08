@@ -1,0 +1,17 @@
+REM Title: Clipboard Quackpot
+REM Description: replaces the clipboard so the next paste is a quack instead.
+REM Target OS: Windows
+REM Novelty: a single-item clipboard swap, nothing like it in the repo.
+REM Revert: copy anything else. only the one clipboard item changes.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate before any keystrokes
+DELAY 1200
+
+REM Open the Run dialog
+GUI r
+DELAY 500
+REM Set-Clipboard replaces ONLY the single current clipboard item. The console runs visibly (no stealth): it flashes open, sets the clipboard, and exits.
+REM Nothing is downloaded, saved, or executed beyond this one local clipboard write.
+STRINGLN powershell -c "Set-Clipboard -Value 'QUACK. Your clipboard now belongs to the pond. (Copy anything to undo.)'"

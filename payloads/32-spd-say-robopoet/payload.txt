@@ -1,0 +1,18 @@
+REM Title: spd-say Robo-Poet
+REM Description: reads a short robotic ode to rubber ducks out loud.
+REM Target OS: Linux (needs speech-dispatcher for spd-say, or espeak as fallback)
+REM Novelty: linux tts via spd-say with an espeak fallback, not the macos talkers.
+REM Revert: none, audio only.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard interface enumerate before typing
+DELAY 1200
+
+REM Open the default terminal (GNOME and most desktops: Ctrl+Alt+T)
+CTRL ALT t
+REM Give the terminal window time to spawn and take focus
+DELAY 1200
+
+REM If spd-say exists, recite the ode; otherwise fall back to espeak saying 'quack'
+STRINGLN command -v spd-say >/dev/null && spd-say -t male3 "Beep. I am a duck. Boop. I float. Beep. Squeeze me. Boop. I squeak." || espeak "quack"

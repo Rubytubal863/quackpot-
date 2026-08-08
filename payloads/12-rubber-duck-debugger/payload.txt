@@ -1,0 +1,35 @@
+REM Title: Rubber Duck Debugger
+REM Description: the duck debugs your code by asking the usual rubber-duck questions, then shouts the punchline.
+REM Target OS: Windows
+REM Novelty: on-theme rubber-duck-debugging, and the punchline uses HOLD SHIFT to shout.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the host enumerate the HID keyboard before typing.
+DELAY 1200
+
+REM Open the Run dialog and launch Notepad.
+GUI r
+REM Wait for the Run dialog to appear.
+DELAY 500
+STRINGLN notepad
+REM Wait for Notepad to be focused and ready for input.
+DELAY 1200
+
+STRINGLN Hi. I am your rubber duck. Let's debug this together.
+DELAY 300
+STRINGLN Walk me through it line by line.
+DELAY 300
+STRINGLN Now... what did you EXPECT to happen?
+DELAY 300
+STRINGLN And what actually happened?
+DELAY 300
+STRINGLN Are you sure that variable is what you think it is?
+DELAY 300
+
+REM Punchline: hold SHIFT so every letter is typed uppercase (shouted).
+HOLD SHIFT
+STRING have you tried turning your assumptions off and on again
+RELEASE SHIFT
+ENTER

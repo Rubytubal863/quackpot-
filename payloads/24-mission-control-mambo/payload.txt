@@ -1,0 +1,34 @@
+REM Title: Mission Control Mambo
+REM Description: runs a short mission-control and show-desktop dance.
+REM Target OS: macOS
+REM Novelty: choreographed mission-control moves, not in the repo.
+REM Revert: auto, ends back on the normal desktop.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard enumerate before the first chord
+DELAY 1200
+
+REM All of these are default Mission Control keyboard shortcuts.
+
+REM Up into Mission Control (Control + Up)
+CTRL UPARROW
+DELAY 900
+
+REM Back down, out of Mission Control (Control + Down)
+CTRL DOWNARROW
+DELAY 700
+
+REM Slide one space to the right, then back left (Control + Left/Right).
+REM If no adjacent space exists this is simply a no-op - harmless either way.
+CTRL RIGHTARROW
+DELAY 700
+CTRL LEFTARROW
+DELAY 700
+
+REM Show Desktop (Command + F3) - fly the windows out to the edges
+GUI F3
+DELAY 900
+
+REM Command + F3 again brings every window back where it was
+GUI F3

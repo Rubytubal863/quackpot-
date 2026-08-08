@@ -1,0 +1,15 @@
+REM Title: SAPI Sea Shanty
+REM Description: sings a short duck sea shanty out loud through the built-in sapi voice.
+REM Target OS: Windows
+REM Novelty: a windows sapi shanty with its own lyrics; the repo's talkers are macos (MacTalk) or a generic talking duck.
+REM Revert: none, it's audio.
+REM Author: azzie
+
+ATTACKMODE HID
+DELAY 1200
+
+REM Open Run, then speak via the SAPI.SpVoice COM object. Rate=-1 slows it for a sing-song feel.
+REM Console runs visibly (no stealth): it flashes open, speaks, exits.
+GUI r
+DELAY 500
+STRINGLN powershell -c "$v=New-Object -ComObject SAPI.SpVoice;$v.Rate=-1;$v.Speak('Oh we sail the seven puddles, quack quack quack');$v.Speak('a rubber ducky captain, and it never quacks back')"

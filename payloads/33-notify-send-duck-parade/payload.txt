@@ -1,0 +1,18 @@
+REM Title: Notify-Send Duck Parade
+REM Description: fires a few friendly desktop notifications, then they expire.
+REM Target OS: Linux (needs notify-send / libnotify)
+REM Novelty: a libnotify notification parade, nothing like it in the repo.
+REM Revert: auto, the notifications expire on their own.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard interface enumerate before typing
+DELAY 1200
+
+REM Open the default terminal (GNOME and most desktops: Ctrl+Alt+T)
+CTRL ALT t
+REM Give the terminal window time to spawn and take focus
+DELAY 1200
+
+REM Fire four notifications, one per second; each auto-expires from the notification daemon
+STRINGLN for m in "a wild duck appears" "it means well" "it has been reversed already" "quack"; do notify-send "Quackpot" "$m"; sleep 1; done

@@ -1,0 +1,51 @@
+REM Title: Build Your Own Duck
+REM Description: types a note explaining it was a ducky prank, plus how to build your own.
+REM Target OS: Cross-platform (Windows / macOS / Linux X11; needs the OS_DETECT extension in Payload Studio)
+REM Novelty: a here's-how-to-make-one reveal, not a plain PSA.
+REM Revert: close the editor without saving. the linux branch only prints.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate, and give OS_DETECT time to populate $_OS before we branch.
+DELAY 1500
+
+REM Same friendly message in every branch; defined once, run only when called.
+FUNCTION note_body()
+    STRINGLN Surprise. That was a harmless USB Rubber Ducky prank.
+    STRINGLN A Rubber Ducky is a tiny gadget that pretends to be a keyboard and types by itself.
+    STRINGLN Nothing was saved and nothing on your machine was changed.
+    ENTER
+    STRINGLN Want to build your own? Three steps:
+    STRINGLN   1) Get a Hak5 USB Rubber Ducky.
+    STRINGLN   2) Write DuckyScript in Payload Studio.
+    STRINGLN   3) Flash inject.bin onto the ducky.
+    ENTER
+    STRINGLN More payloads: https://github.com/vmfunc/quackpot-
+END_FUNCTION
+
+IF ($_OS == WINDOWS) THEN
+    REM Run dialog, then Notepad as a scratch surface (never saved).
+    GUI r
+    DELAY 500
+    STRING notepad
+    ENTER
+    DELAY 1200
+    note_body()
+ELSE IF ($_OS == MACOS) THEN
+    REM Spotlight -> TextEdit, then Cmd+N for a fresh untitled document.
+    GUI SPACE
+    DELAY 500
+    STRING TextEdit
+    ENTER
+    DELAY 1500
+    GUI n
+    DELAY 400
+    note_body()
+ELSE IF ($_OS == LINUX) THEN
+    REM Open a terminal (GNOME default chord) and just print via a quoted heredoc; nothing is written to disk.
+    CTRL ALT t
+    DELAY 800
+    STRINGLN cat <<'NOTE'
+    note_body()
+    STRINGLN NOTE
+END_IF

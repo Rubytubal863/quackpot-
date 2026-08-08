@@ -1,0 +1,18 @@
+REM Title: xdg-open Wholesome Detour
+REM Description: opens the browser to a useless-but-harmless site via xdg-open.
+REM Target OS: Linux (X11) - needs xdg-utils and a configured default browser
+REM Novelty: xdg-open for a harmless detour, the linux counterpart to the windows web gag.
+REM Revert: close the tab.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID enumerate
+DELAY 1200
+
+REM Open the default terminal (GNOME shortcut)
+CTRL ALT t
+REM Wait for the terminal window
+DELAY 1200
+
+REM xdg-open hands the URL to the user's default browser; swap this URL for any SFW site you like
+STRINGLN xdg-open https://theuselessweb.com

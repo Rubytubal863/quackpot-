@@ -1,0 +1,38 @@
+REM Title: Quack Pyramid
+REM Description: builds a growing pyramid of the word quack, one more per line.
+REM Target OS: Windows
+REM Novelty: a nested WHILE loop draws it line by line instead of a static banner.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard finish enumerating before we type
+DELAY 1200
+
+REM Launch Notepad from the Run dialog
+GUI r
+REM Run needs a beat to appear
+DELAY 500
+STRING notepad
+ENTER
+REM Notepad needs a moment to focus
+DELAY 1200
+
+REM Number of rows in the pyramid
+DEFINE #ROWS 5
+
+REM $row is the current line, $c counts quacks typed on it
+VAR $row = 1
+VAR $c = 0
+WHILE ($row <= #ROWS)
+  REM Reset the per-row quack counter at the start of each line
+  $c = 0
+  WHILE ($c < $row)
+    STRING quack
+    $c = $c + 1
+  END_WHILE
+  ENTER
+  $row = $row + 1
+  REM small beat between rows
+  DELAY 250
+END_WHILE

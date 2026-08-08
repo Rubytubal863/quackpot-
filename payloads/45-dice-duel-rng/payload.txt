@@ -1,0 +1,67 @@
+REM Title: Dice Duel vs the Duck
+REM Description: you and the duck each roll a die into textedit, and it calls the winner.
+REM Target OS: macOS
+REM Novelty: a dice duel with $_RANDOM_INT and IF comparisons, each roll printed via branches.
+REM Revert: close textedit without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate.
+DELAY 1200
+
+REM Spotlight -> TextEdit, then Cmd+N for a fresh untitled document.
+GUI SPACE
+DELAY 500
+STRING TextEdit
+ENTER
+DELAY 1500
+GUI n
+DELAY 400
+
+REM Two rolls in [1,6]; each _RANDOM_INT read is a fresh number.
+$_RANDOM_MIN = 1
+$_RANDOM_MAX = 6
+VAR $you = $_RANDOM_INT
+VAR $duck = $_RANDOM_INT
+
+REM Values cannot be interpolated into STRING, so branch to print each roll.
+STRING You rolled: 
+IF ($you == 1) THEN
+    STRING 1
+ELSE IF ($you == 2) THEN
+    STRING 2
+ELSE IF ($you == 3) THEN
+    STRING 3
+ELSE IF ($you == 4) THEN
+    STRING 4
+ELSE IF ($you == 5) THEN
+    STRING 5
+ELSE
+    STRING 6
+END_IF
+ENTER
+
+STRING The duck rolled: 
+IF ($duck == 1) THEN
+    STRING 1
+ELSE IF ($duck == 2) THEN
+    STRING 2
+ELSE IF ($duck == 3) THEN
+    STRING 3
+ELSE IF ($duck == 4) THEN
+    STRING 4
+ELSE IF ($duck == 5) THEN
+    STRING 5
+ELSE
+    STRING 6
+END_IF
+ENTER
+
+REM Compare and declare the winner.
+IF ($you > $duck) THEN
+    STRINGLN You win!
+ELSE IF ($you == $duck) THEN
+    STRINGLN A tie - rematch!
+ELSE
+    STRINGLN The duck wins. It always wins.
+END_IF

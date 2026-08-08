@@ -1,0 +1,24 @@
+REM Title: Stickies Love Note
+REM Description: drops a short wholesome duck sticky on the desktop.
+REM Target OS: macOS
+REM Novelty: uses the stickies app, not in the repo.
+REM Revert: delete the sticky (focus it, cmd+w, delete note).
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID keyboard time to enumerate
+DELAY 1200
+
+REM Open Spotlight and launch Stickies
+GUI SPACE
+DELAY 500
+STRINGLN stickies
+REM Wait for Stickies to come up
+DELAY 1500
+
+REM New note (Cmd+N)
+GUI n
+DELAY 500
+
+STRINGLN You are doing great.
+STRINGLN - a duck who believes in you

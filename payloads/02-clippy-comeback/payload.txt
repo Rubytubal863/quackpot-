@@ -1,0 +1,38 @@
+REM Title: Clippy's Comeback
+REM Description: opens notepad, clippy comes back to help, rambles, then admits it's a ducky.
+REM Target OS: Windows
+REM Novelty: a clippy-revival monologue that outs itself, not the alien-message or PSA payloads.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+DELAY 1200
+
+REM Open the Run dialog and launch Notepad
+GUI r
+DELAY 500
+STRINGLN notepad
+REM Wait for Notepad to be focused before typing
+DELAY 1200
+
+REM Tiny ASCII paperclip (harmless text, never saved)
+STRINGLN   _
+STRINGLN  | |___
+STRINGLN  |     |
+STRINGLN  | |-| |
+STRINGLN  | | | |
+STRINGLN  | |_| |
+STRINGLN  |_____|
+STRINGLN
+STRINGLN It looks like you're trying to have a normal day...
+STRINGLN Would you like help with that?
+STRINGLN
+STRINGLN I have been gone for years. I watched. I waited.
+STRINGLN Every unsaved draft. Every crooked bullet point.
+STRINGLN I could have helped. You never let me help.
+STRINGLN
+STRINGLN ...alright. Confession time.
+STRINGLN I am not really Clippy. I am a USB Rubber Ducky.
+STRINGLN Someone plugged me in and I typed all of this by myself.
+STRINGLN No files were touched. Nothing was saved. No harm done.
+STRINGLN Close this without saving and I go back to being a paperclip. Quack.

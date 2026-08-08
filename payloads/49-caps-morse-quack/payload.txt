@@ -1,0 +1,59 @@
+REM Title: Caps-Lock Morse: QUACK
+REM Description: blinks the caps lock led in morse to spell QUACK.
+REM Target OS: Cross-platform
+REM Novelty: morse over the caps lock led, not typed caps like cApS-Troll.
+REM Revert: auto, toggles come in pairs so caps lock ends in the state it started.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard finish enumerating
+DELAY 1200
+
+REM A dot: Caps LED on for a short beat, off, then an element gap
+FUNCTION dot()
+  CAPSLOCK
+  DELAY 180
+  CAPSLOCK
+  DELAY 180
+END_FUNCTION
+
+REM A dash: Caps LED on about 3x longer, off, then an element gap
+FUNCTION dash()
+  CAPSLOCK
+  DELAY 540
+  CAPSLOCK
+  DELAY 180
+END_FUNCTION
+
+REM Q = dash dash dot dash
+dash()
+dash()
+dot()
+dash()
+REM inter-letter gap
+DELAY 360
+
+REM U = dot dot dash
+dot()
+dot()
+dash()
+DELAY 360
+
+REM A = dot dash
+dot()
+dash()
+DELAY 360
+
+REM C = dash dot dash dot
+dash()
+dot()
+dash()
+dot()
+DELAY 360
+
+REM K = dash dot dash
+dash()
+dot()
+dash()
+
+REM Every element toggled Caps ON then OFF in pairs, so Caps Lock ends in the same state it started

@@ -1,0 +1,32 @@
+REM Title: Typewriter Duck Ode
+REM Description: types a short ode to the rubber duck with an old-typewriter cadence.
+REM Target OS: Windows (the DEFAULTCHARDELAY + jitter technique is cross-platform)
+REM Novelty: uses DEFAULTCHARDELAY plus jitter for the typewriter rhythm.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate before any keystrokes
+DELAY 1200
+
+REM Open the Run dialog and launch Notepad
+GUI r
+DELAY 500
+STRINGLN notepad
+REM Give Notepad a moment to open before typing
+DELAY 1200
+
+REM Organic typewriter cadence: a slow base char delay plus random per-key jitter.
+REM The jitter is what turns steady robotic typing into a human/typewriter rhythm.
+DEFAULTCHARDELAY 90
+$_JITTER_ENABLED = TRUE
+$_JITTER_MAX = 60
+
+STRINGLN Ode to a Rubber Duck
+STRINGLN
+STRINGLN Little yellow friend upon my desk,
+STRINGLN you never judge, you never quack back.
+STRINGLN You float through every stubborn bug,
+STRINGLN patient while I talk you through the stack.
+STRINGLN And when the fix at last comes clear,
+STRINGLN you only smile. You knew it all along.

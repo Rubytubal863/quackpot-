@@ -1,0 +1,36 @@
+REM Title: Magnifier Disco
+REM Description: strobes the windows magnifier in and out on a beat, then closes it.
+REM Target OS: Windows
+REM Novelty: a rhythmic zoom instead of the one-shot resolution/zoom prank (repo's Resolution_Prank).
+REM Revert: auto. GUI ESCAPE closes magnifier and resets zoom to 100%.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Give the HID a moment to enumerate on the host
+DELAY 1200
+
+REM The FIRST plus chord both LAUNCHES Magnifier and zooms it to 200%.
+REM GUI + is the plus chord, same literal-symbol form as browser CTRL +
+GUI +
+DELAY 400
+
+REM Strobe: alternate zoom OUT (GUI -, minus chord) and zoom IN (GUI +) on a beat
+GUI -
+DELAY 350
+GUI +
+DELAY 350
+GUI -
+DELAY 350
+GUI +
+DELAY 350
+GUI -
+DELAY 350
+GUI +
+DELAY 350
+GUI -
+DELAY 350
+GUI +
+DELAY 350
+
+REM GUI ESCAPE closes Magnifier and snaps the zoom back to 100%
+GUI ESCAPE

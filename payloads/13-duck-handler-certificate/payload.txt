@@ -1,0 +1,40 @@
+REM Title: Certified Duck Handler
+REM Description: prints an ascii certificate naming you a certified duck handler.
+REM Target OS: Windows
+REM Novelty: an ascii certificate generator, not in the repo.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the host enumerate the HID keyboard before typing.
+DELAY 1200
+
+REM Open the Run dialog and launch Notepad.
+GUI r
+REM Wait for the Run dialog to appear.
+DELAY 500
+STRINGLN notepad
+REM Wait for Notepad to be focused and ready for input.
+DELAY 1200
+
+REM Certificate box: every line is exactly 42 characters wide so the borders align.
+STRINGLN ==========================================
+STRINGLN |                                        |
+STRINGLN |      CERTIFICATE OF DUCK HANDLING      |
+STRINGLN |                                        |
+STRINGLN |   This certifies that                  |
+STRINGLN |                                        |
+STRINGLN |   ______________________________       |
+STRINGLN |                                        |
+STRINGLN |   is hereby a CERTIFIED DUCK HANDLER   |
+STRINGLN |                                        |
+STRINGLN | Awarded for surviving a harmless quack |
+STRINGLN |                                        |
+STRINGLN |                   __                   |
+STRINGLN |                <(o )___                |
+STRINGLN |                ( ._> /                 |
+STRINGLN |                 `---'                  |
+STRINGLN |                                        |
+STRINGLN |           Official Duck Seal           |
+STRINGLN |                                        |
+STRINGLN ==========================================

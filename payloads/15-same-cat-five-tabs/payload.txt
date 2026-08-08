@@ -1,0 +1,30 @@
+REM Title: Five Tabs, One Cat
+REM Description: opens the same bouncing-cat page in five tabs via a loop.
+REM Target OS: Windows
+REM Novelty: the same-page-in-n-tabs bit driven by a counted WHILE, kept to five.
+REM Revert: close the tabs.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the host enumerate the HID keyboard before typing.
+DELAY 1200
+
+REM Open the Run dialog and load the site in the default browser first.
+GUI r
+REM Wait for the Run dialog to appear.
+DELAY 500
+STRINGLN https://cat-bounce.com
+REM Browser cold start can be slow; wait before opening more tabs.
+DELAY 2500
+
+REM First tab is already open. Loop opens 4 more (5 total).
+VAR $t = 1
+WHILE ($t < 5)
+    REM Ctrl+T opens a new browser tab, then type the same URL.
+    CTRL t
+    DELAY 500
+    STRINGLN https://cat-bounce.com
+    REM Give the tab a moment to navigate.
+    DELAY 800
+    $t = $t + 1
+END_WHILE

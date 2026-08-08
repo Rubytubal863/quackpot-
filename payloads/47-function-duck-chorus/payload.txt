@@ -1,0 +1,39 @@
+REM Title: Function Duck Chorus
+REM Description: opens nano on an empty buffer and sings a verse/chorus duck song from two functions.
+REM Target OS: Linux (X11)
+REM Novelty: the whole payload is built from FUNCTIONs (verse/chorus) called in order.
+REM Revert: exit nano without saving (ctrl+x, then n).
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard finish enumerating
+DELAY 1200
+
+REM Function bodies only type when the function is CALLED below
+FUNCTION verse()
+  STRINGLN There once was a duck who lived down by the creek,
+  STRINGLN he quacked every morning for most of the week.
+END_FUNCTION
+
+FUNCTION chorus()
+  STRINGLN Quack, quack, quack, go the feathery folk,
+  STRINGLN waddling around like it is all a big joke.
+END_FUNCTION
+
+REM Open a terminal (GNOME / X11 default shortcut)
+CTRL ALT t
+REM Terminal needs time to open
+DELAY 1200
+
+REM Start nano with a blank, unsaved buffer
+STRINGLN nano
+REM nano needs a moment to take over the terminal
+DELAY 1000
+
+REM Sing it: verse, chorus, verse, chorus
+verse()
+chorus()
+verse()
+chorus()
+
+REM To leave: press Ctrl+X then N to quit nano WITHOUT saving

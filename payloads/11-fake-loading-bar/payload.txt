@@ -1,0 +1,36 @@
+REM Title: Fake Loading Bar
+REM Description: types an ascii progress bar up to 100%, then admits it was nothing.
+REM Target OS: Windows
+REM Novelty: the bar is drawn live with a WHILE loop.
+REM Revert: close notepad without saving.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the host enumerate the HID keyboard before typing.
+DELAY 1200
+
+REM Total width of the bar in characters.
+DEFINE #BARWIDTH 20
+
+REM Open the Run dialog and launch Notepad.
+GUI r
+REM Wait for the Run dialog to appear.
+DELAY 500
+STRINGLN notepad
+REM Wait for Notepad to be focused and ready for input.
+DELAY 1200
+
+STRINGLN Downloading more ducks...
+STRING [
+
+REM Fill the bar: print one "=" per iteration, #BARWIDTH times.
+VAR $i = 0
+WHILE ($i < #BARWIDTH)
+    STRING =
+    $i = $i + 1
+    REM Pause between segments so the fill is visible.
+    DELAY 180
+END_WHILE
+
+STRINGLN ] 100%
+STRINGLN Just kidding. There is no such thing as more ducks. Only ducks.

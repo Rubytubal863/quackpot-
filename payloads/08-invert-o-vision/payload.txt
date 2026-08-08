@@ -1,0 +1,21 @@
+REM Title: Invert-O-Vision
+REM Description: inverts the screen colours through magnifier for a few seconds, then restores.
+REM Target OS: Windows
+REM Novelty: magnifier colour-invert (ctrl+alt+i) as a timed toggle; no windows invert payload exists.
+REM Revert: auto. GUI ESCAPE closes magnifier and undoes the invert and zoom.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let HID enumerate before any keystrokes
+DELAY 1200
+
+REM Win + '+' launches Magnifier (opens at 200% zoom)
+GUI +
+DELAY 600
+
+REM Ctrl+Alt+I toggles Magnifier's full-screen colour inversion (photo-negative)
+CTRL ALT i
+DELAY 4000
+
+REM Win + Esc closes Magnifier, restoring colours and zoom in one shot
+GUI ESCAPE

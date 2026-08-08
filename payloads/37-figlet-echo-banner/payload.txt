@@ -1,0 +1,18 @@
+REM Title: Figlet-or-Echo Banner
+REM Description: prints a big QUACK banner with figlet, or plain text if figlet isn't installed.
+REM Target OS: Linux (X11) - needs a terminal that opens on CTRL ALT t
+REM Novelty: a figlet-or-echo banner that never errors whatever's installed.
+REM Revert: close the terminal.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID enumerate
+DELAY 1200
+
+REM Open the default terminal (GNOME shortcut)
+CTRL ALT t
+REM Wait for the terminal window
+DELAY 1200
+
+REM figlet if present (&&), otherwise (||) a plain-text banner that still says QUACK -> the line can never exit non-zero into an error
+STRINGLN command -v figlet >/dev/null && figlet QUACK || echo "=== Q U A C K ==="

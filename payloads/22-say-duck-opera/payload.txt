@@ -1,0 +1,24 @@
+REM Title: Say Duck Opera
+REM Description: performs a tiny duck opera out loud with say.
+REM Target OS: macOS
+REM Novelty: a say-driven mini opera with its own libretto, not MacTalk.
+REM Revert: none, audio only.
+REM Author: azzie
+
+ATTACKMODE HID
+REM Let the HID keyboard enumerate before typing
+DELAY 1200
+
+REM Open Terminal via Spotlight (Command+Space)
+GUI SPACE
+DELAY 500
+STRINGLN terminal
+REM Give Terminal a moment to launch and focus
+DELAY 1500
+
+REM Perform the opera. -r 160 sets a stately words-per-minute pace.
+REM Swap in a musical voice if it is installed, e.g. add:  -v Bells
+STRINGLN say -r 160 "Quaaack. Quack quack quaaaack. A rubber duck, aloooone, upon the poooond."
+
+REM Close the shell cleanly, leaving nothing behind
+STRINGLN exit

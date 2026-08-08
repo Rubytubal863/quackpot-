@@ -1,0 +1,36 @@
+REM Title: Ducky Traffic Light
+REM Description: runs a red-then-green routine on the ducky's own onboard led. types nothing.
+REM Target OS: Cross-platform
+REM Novelty: pure onboard-led choreography with LED_R/LED_G/LED_OFF, no keystrokes at all.
+REM Revert: none, the led turns off at the end.
+REM Author: azzie
+
+ATTACKMODE HID
+DELAY 1000
+
+REM All LED commands below drive the DUCKY'S OWN onboard LED, not the
+REM keyboard lock lights. Only three states exist: LED_R (red),
+REM LED_G (green), LED_OFF. There is no blue LED.
+
+REM Red: stop, should I really do this?
+LED_R
+DELAY 1000
+
+REM Deliberating: blink red a few times
+LED_OFF
+DELAY 200
+LED_R
+DELAY 200
+LED_OFF
+DELAY 200
+LED_R
+DELAY 200
+LED_OFF
+DELAY 200
+
+REM Green: go for it
+LED_G
+DELAY 1500
+
+REM All done, LED off
+LED_OFF
